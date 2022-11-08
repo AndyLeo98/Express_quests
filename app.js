@@ -5,6 +5,8 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.json());
+
 // const port = 5000;
 
 const welcome = (req, res) => {
@@ -24,6 +26,10 @@ const usersHandler = require("./usersHandler");
 
 app.get("/api/users", usersHandler.getUsers);
 app.get("/api/users/:id", usersHandler.getUsersById);
+
+//* POST ====================================
+app.post("/api/movies", movieHandlers.postMovie);
+app.post("/api/users", usersHandler.postUser);
 
 //* LISTEN ====================================
 app.listen(port, (err) => {
